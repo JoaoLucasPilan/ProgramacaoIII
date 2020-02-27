@@ -38,34 +38,35 @@ app.listen(port, () => {
 
     class Endereco{
         constructor(cep, rua, numero, bairro, complemento, cidade, estado){
-            this.cep = cep; 
+            this.cep = cep;
+            if (cep === undefined) {
+                throw new Error('Lhe falta CEP');
+            } 
             this.rua = rua;
             this.numero = numero;
             this.bairro = bairro;
             this.complemento = complemento;
             this.cidade = cidade;
             this.estado = estado;
-            if (cep === undefined) {
-                throw new Error('Lhe falta CEP');
-            }
         }
     }
     //----------------------------------------------------------------------------------------------------------------
 
-    var cliente1 = new Cliente('João', 'email@gamil.com', '123.123.123-12');
+    var cliente1 = new Cliente('João', 'email@gmail.com', '123.123.123-12');
     cliente1.sobrenome = 'Lucas';
-    var endereco1 = new Endereco('87065450', 'Rua dourados', '401', 'PQ itaipu', 'Casa', 'Maringá', 'Paraná');
+    var endereco1 = new Endereco('87065-450' , 'Rua dourados', '401', 'PQ itaipu', 'Casa', 'Maringá', 'Paraná');
     cliente1.endereco = endereco1;
+    console.log(cliente1);
 
     var cliente2 = new Cliente('Pamela', 'pam@gmail.com', '321.654.987-78')
     cliente2.telefone = '44999584712';
 
-    console.log(`\nNome: ${cliente1.nome} ${cliente1.sobrenome}\nCEP: ${cliente1.endereco.cep}\nCidade: ${cliente1.endereco.cidade}\nEstado: ${cliente1.endereco.estado}\n`);
+    //console.log(`\nNome: ${cliente1.nome} ${cliente1.sobrenome}\nCEP: ${cliente1.endereco.cep}\nCidade: ${cliente1.endereco.cidade}\nEstado: ${cliente1.endereco.estado}\n`);
     console.log(`Nome: ${cliente2.nome} \nEmail: ${cliente2.email} \nTelefone: ${cliente2.telefone}\n`);
     //----------------------------------------------------------------------------------------------------------------
 
     var fornecedor1 = new Fornecedor('Reginaldo', 'seila@gmail.com', '123.654.123.323');
-    fornecedor1.nomeFantasia = 'Reginaldinho';
+    fornecedor1.nomeFantasia = 'Reginaldinho auto-peças';
 
     var fornecedor2 = new Fornecedor('zezin', 'seila2313@gmail.com', '1213321');
     
